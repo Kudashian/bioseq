@@ -11,3 +11,7 @@ class Sequencer:
     
     def __len__(self):
         return len(self.sequence)
+    
+    def __repr__(self):
+        seq_preview = self.sequence[:25]
+        return f"Sequencer(pid = {self.pid!r}, sequence = {seq_preview}, refgenome = {self.refgenome}, organism = {self.organism}, technology = {self.technology})"
