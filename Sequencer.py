@@ -15,3 +15,45 @@ class Sequencer:
     def __repr__(self):
         seq_preview = self.sequence[:25]
         return f"Sequencer(pid = {self.pid!r}, sequence = {seq_preview}, refgenome = {self.refgenome}, organism = {self.organism}, technology = {self.technology})"
+    
+    def __getattribute__(self, attr_name):
+        return super().__getattribute__(attr_name)
+    
+    def __setattr__(self, attr_name, value):
+        super().__setattr__(attr_name, value)
+
+    def __contains__(self, sub_seq):
+        return sub_seq in self.sequence
+    
+    def __dir__(self):
+        return super().__dir__() + ['pid', 'sequence', 'refgenome', 'organism', 'technology']
+    
+    def __getitem__(self, index):
+        return self.sequence[index]
+    
+    def __eq__(self, other):
+        if not isinstance(other, Sequencer):
+            return False
+        return self.sequence == other.sequence
+    
+    @property '''GC content of the sequence'''
+    def gc_content(self):
+        self.sequence = self.sequence.lower()
+        gc_count = self.sequence.count('g') + self.sequence.count('c')
+        return (gc_count / len(self.sequence)) * 100 if len(self.sequence) > 0 else 0
+    
+    @property '''CpG sites in the sequence'''
+    def cpg_sites(self):
+        return self.sequence.count('cg')
+    
+    @property '''AT content of the sequence'''
+    def at_content(self):
+        self.sequence = self.sequence.lower()
+        at_count = self.sequence.count('a') + self.sequence.count('t')
+        return (at_count / len(self.sequence)) * 100 if len(self.sequence) > 0 else 0
+    
+    @property '''Complementary DNA strand'''
+    def complementary_strand(self):
+        complement = {'a': 't', 't': 'a', 'g': 'c', 'c': 'g'}
+        return ''.join(complement[base] for base in self.sequence.lower())
+    
