@@ -36,23 +36,27 @@ class Sequencer:
             return False
         return self.sequence == other.sequence
     
-    @property '''GC content of the sequence'''
+    '''GC content of the sequence'''
+    @property 
     def gc_content(self):
         self.sequence = self.sequence.lower()
         gc_count = self.sequence.count('g') + self.sequence.count('c')
         return (gc_count / len(self.sequence)) * 100 if len(self.sequence) > 0 else 0
     
-    @property '''CpG sites in the sequence'''
+    '''CpG sites in the sequence'''    
+    @property 
     def cpg_sites(self):
         return self.sequence.count('cg')
     
-    @property '''AT content of the sequence'''
+    '''AT content of the sequence'''
+    @property 
     def at_content(self):
         self.sequence = self.sequence.lower()
         at_count = self.sequence.count('a') + self.sequence.count('t')
         return (at_count / len(self.sequence)) * 100 if len(self.sequence) > 0 else 0
     
-    @property '''Complementary DNA strand'''
+    '''Complementary DNA strand'''
+    @property 
     def complementary_strand(self):
         complement = {'a': 't', 't': 'a', 'g': 'c', 'c': 'g'}
         return ''.join(complement[base] for base in self.sequence.lower())
