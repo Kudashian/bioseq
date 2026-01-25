@@ -73,8 +73,11 @@ class FastaReader:
         self._file = None
 
     def __enter__(self):
-        #Open the file within "with" context
-        self._file = open(self.filepath, 'r')
+        """Open file (handles both .fasta and .fasta.gz)"""
+        if self.filepath.endswith('.gz'):
+            self.file = gzip.open(self.filepath, 'rt')  # 'rt' = read text mode
+        else:
+            self.file = open(self.filepath, 'r')
         return self
     
     def __exit__(self, exc_type, exc_value, traceback):
