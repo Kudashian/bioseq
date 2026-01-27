@@ -1,4 +1,5 @@
 import torch
+import torch.nn as nn
 
 class SequenceEncoder:
     """
@@ -33,3 +34,4 @@ class SequenceEncoder:
             nucleotide = self.index_to_nucleotide[index]
             sequence.append(nucleotide)
         return ''.join(sequence)
+    
