@@ -1,0 +1,28 @@
+{
+  "os":  "Windows-11-10.0.26200-SP0",
+  "python":  "CPython 3.12.10",
+  "startedAt":  "2026-05-01T16:12:28.505550Z",
+  "program":  "c:\\Users\\Kudashian\\My Drive\\TheToolShed\\bioseq\\week8_MLSOps\\notebooks\\01_CNN.ipynb",
+  "codePath":  "c:\\Users\\Kudashian\\My Drive\\TheToolShed\\bioseq\\week8_MLSOps\\notebooks\\01_CNN.ipynb",
+  "codePathLocal":  "01_CNN.ipynb",
+  "git":  {
+    "remote":  "git@github.com:Kudashian/bioseq.git",
+    "commit":  "c6e1e299bb7f8b6fdf50dfad63c7116edacb1eef"
+  },
+  "email":  "nyamupakuda@gmail.com",
+  "root":  "c:\\Users\\Kudashian\\My Drive\\TheToolShed\\bioseq\\week8_MLSOps\\notebooks",
+  "host":  "TheIncrediMachineII",
+  "executable":  "C:\\Users\\Kudashian\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe",
+  "cpu_count":  4,
+  "cpu_count_logical":  8,
+  "disk":  {
+    "/":  {
+      "total":  "510941720576",
+      "used":  "424335396864"
+    }
+  },
+  "memory":  {
+    "total":  "16844595200"
+  },
+  "writerId":  "hj6tqoweh1n509ulo89ik8zdhhcbgagf"
+}

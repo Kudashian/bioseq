@@ -1,0 +1,63 @@
+_wandb:
+    value:
+        cli_version: 0.26.1
+        e:
+            hj6tqoweh1n509ulo89ik8zdhhcbgagf:
+                codePath: c:\Users\Kudashian\My Drive\TheToolShed\bioseq\week8_MLSOps\notebooks\01_CNN.ipynb
+                codePathLocal: 01_CNN.ipynb
+                cpu_count: 4
+                cpu_count_logical: 8
+                disk:
+                    /:
+                        total: "510941720576"
+                        used: "424335396864"
+                email: nyamupakuda@gmail.com
+                executable: C:\Users\Kudashian\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\python.exe
+                git:
+                    commit: c6e1e299bb7f8b6fdf50dfad63c7116edacb1eef
+                    remote: git@github.com:Kudashian/bioseq.git
+                host: TheIncrediMachineII
+                memory:
+                    total: "16844595200"
+                os: Windows-11-10.0.26200-SP0
+                program: c:\Users\Kudashian\My Drive\TheToolShed\bioseq\week8_MLSOps\notebooks\01_CNN.ipynb
+                python: CPython 3.12.10
+                root: c:\Users\Kudashian\My Drive\TheToolShed\bioseq\week8_MLSOps\notebooks
+                startedAt: "2026-05-01T16:12:28.505550Z"
+                writerId: hj6tqoweh1n509ulo89ik8zdhhcbgagf
+        m: []
+        python_version: 3.12.10
+        t:
+            "1":
+                - 1
+                - 5
+                - 53
+            "2":
+                - 1
+                - 5
+                - 53
+            "3":
+                - 2
+                - 13
+                - 16
+                - 61
+                - 62
+            "4": 3.12.10
+            "5": 0.26.1
+            "8":
+                - 1
+                - 3
+            "12": 0.26.1
+            "13": windows-amd64
+batchnorm:
+    value: true
+dropout:
+    value: 0.5
+epochs:
+    value: 50
+hidden_size:
+    value: 96
+kernel_size:
+    value: 10
+lr:
+    value: 0.001

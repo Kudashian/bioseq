@@ -1,0 +1,1 @@
+{"fold":5,"_timestamp":1.7776582659770775e+09,"std_accuracy":0.05553287518900288,"mean_accuracy":0.9619047619047618,"_step":249,"_runtime":11,"train_loss":0.00320700416341424,"fold_accuracy":0.8571428571428571,"_wandb":{"runtime":11},"best_fold":1,"best_fold_accuracy":1}
