@@ -4,6 +4,7 @@ from typing import Optional, List
 
 from matplotlib.pylab import sample
 
+
 @dataclass
 class Variant:
     CHROM: str
@@ -24,7 +25,7 @@ class Genotype:
     GQ: Optional[float] = None
     PL: Optional[str] = None
 
-class VCFParser:
+class VCFParser:    
     def __init__(self, filepath: str):
         self.filepath = filepath
         self.header = []
