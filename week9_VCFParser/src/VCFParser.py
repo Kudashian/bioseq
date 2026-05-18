@@ -17,6 +17,10 @@ class Variant:
     INFO: dict
     GENOTYPES: dict  # sample_id → Genotype
 
+    @property
+    def key(self):
+        return f"{self.CHROM}:{self.POS}:{self.REF}/{self.ALT}"
+
 @dataclass
 class Genotype:
     GT: Optional[str] = None
