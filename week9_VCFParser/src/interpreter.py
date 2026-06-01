@@ -68,7 +68,7 @@ def parse_response(response_text):
     report = re.sub(r'```json.*?```', '', response_text, flags=re.DOTALL).strip()
     return report, structured
 
-def LLMInterpreter(content: str, max_tokens: int = 2048):
+def LLMInterpreter(content: str, max_tokens: int = 1024):
     response = client.messages.create(
         model=MODEL,
         max_tokens=max_tokens,

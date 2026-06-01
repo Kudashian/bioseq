@@ -2,9 +2,6 @@ from dataclasses import dataclass, fields
 from random import sample
 from typing import Optional, List
 
-from matplotlib.pylab import sample
-
-
 @dataclass
 class Variant:
     CHROM: str

@@ -14,30 +14,30 @@ def get_ensembl_info(variant):
     request_data = f"{variant.CHROM.lstrip('chr')}:{variant.POS}-{variant.POS}:1/{variant.ALT[0]}"
     url = f"https://rest.ensembl.org/vep/human/region/{request_data}"
     headers = {"Content-Type": "application/json"}
-    response = requests.get(url, headers=headers)
-    return response.json()
+    raw_ensembl = requests.get(url, headers=headers)
+    return raw_ensembl.json()
 
-def parse_ensembl_response(response):
+def parse_ensembl_response(raw_ensembl):
     """
     Parses the Ensembl API response to extract relevant information.
 
     Parameters:
-    response (json): The JSON response from the Ensembl API.
+    raw_ensembl (json): The JSON response from the Ensembl API.
 
     Returns:
     dict: A dictionary containing the parsed information from the Ensembl response.
     """
-    if not response:
+    if not raw_ensembl:
         return {}
     
-    transcript_consequences = response[0].get("transcript_consequences", [{}])
+    transcript_consequences = raw_ensembl[0].get("transcript_consequences", [{}])
     # Extract relevant information from the response
     parsed_info = {
-        "consequence": response[0].get("most_severe_consequence", "N/A"),
+        "consequence": raw_ensembl[0].get("most_severe_consequence", "N/A"),
         'gene_symbol': transcript_consequences[0].get("gene_symbol", "N/A"),
         "impact": transcript_consequences[0].get("impact", "N/A"),
         "amino_acid_change": transcript_consequences[0].get("amino_acids", "N/A"),
         "protein_position": transcript_consequences[0].get("protein_position", "N/A")
     }
     
-    return parsed_info
+    return parsed_ensembl_info
