@@ -26,7 +26,7 @@ You must never:
 - State conclusions not supported by the provided evidence
 """
 
-def build_content(variant, ensembl_info, pharmgkb_info):
+def build_content(tool_results, variant, ensembl_info):
     return f"""
 Variant: {variant.key}
 Gene: {ensembl_info.get('gene_symbol')}
@@ -34,7 +34,8 @@ Consequence: {ensembl_info.get('consequence')}
 Impact: {ensembl_info.get('impact')}
 Amino Acid Change: {ensembl_info.get('amino_acids')}
 Allele Frequency: {variant.INFO.get('AF')}
-PharmGKB annotations: {pharmgkb_info}
+PharmGKB annotations: {tool_results.get('pharmgkb', {})}
+ClinVar annotations: {tool_results.get('clinvar', {})}
 
 Provide your response in two parts:
 1. A markdown clinical interpretation report
@@ -78,7 +79,5 @@ def LLMInterpreter(content: str, max_tokens: int = 1024):
         ]
     )
     raw = response.content[0].text
-    print("Raw LLM response:")
-    print(raw)
     report, structured = parse_response(raw)
     return report, structured

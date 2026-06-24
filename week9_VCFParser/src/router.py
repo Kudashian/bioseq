@@ -1,6 +1,9 @@
 import os
+from urllib import response
 from dotenv import load_dotenv 
 import anthropic
+from pharmgkb import get_pharmgkb_info, parse_pharmgkb_response
+from clinvar import get_clinvar_info, parse_clinvar_response
 
 # Load .env from project root (handles running from notebooks)
 load_dotenv(os.path.join(os.path.dirname(__file__), '../../.env'))
@@ -29,7 +32,7 @@ Based on this profile, call the appropriate tool(s) to retrieve annotation data.
 - If both conditions apply: call both tools
 """
 
-def LLMRouter(max_tokens: int = 1024):
+def LLMRouter(variant, ensembl_info, is_pharmacogene, max_tokens: int = 1024):
     content = build_content(variant, ensembl_info, is_pharmacogene)
     response = client.messages.create(
         model=MODEL,
@@ -40,3 +43,16 @@ def LLMRouter(max_tokens: int = 1024):
         ]
     )
     return response
+
+def parse_router_response(response):
+    tool_results = {}
+
+    for block in response.content:
+        if block.type == "tool_use":
+            if block.name == "query_pharmgkb":
+                result = get_pharmgkb_info(block.input["gene_symbol"])
+                tool_results["pharmgkb"] = parse_pharmgkb_response(result)
+            elif block.name == "query_clinvar":
+                result = get_clinvar_info(block.input["term"])
+                tool_results["clinvar"] = parse_clinvar_response(result)
+    return tool_results
