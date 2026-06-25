@@ -40,4 +40,4 @@ def parse_ensembl_response(raw_ensembl):
         "protein_position": transcript_consequences[0].get("protein_position", "N/A")
     }
     
-    return parsed_ensembl_info
+    return parsed_info

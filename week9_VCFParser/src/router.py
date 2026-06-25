@@ -32,18 +32,6 @@ Based on this profile, call the appropriate tool(s) to retrieve annotation data.
 - If both conditions apply: call both tools
 """
 
-def LLMRouter(variant, ensembl_info, is_pharmacogene, max_tokens: int = 1024):
-    content = build_content(variant, ensembl_info, is_pharmacogene)
-    response = client.messages.create(
-        model=MODEL,
-        max_tokens=max_tokens,
-        system=SYSTEM_PROMPT,
-        messages=[
-            {"role": "user", "content": content}
-        ]
-    )
-    return response
-
 def parse_router_response(response):
     tool_results = {}
 
@@ -56,3 +44,16 @@ def parse_router_response(response):
                 result = get_clinvar_info(block.input["term"])
                 tool_results["clinvar"] = parse_clinvar_response(result)
     return tool_results
+
+def LLMRouter(variant, ensembl_info, is_pharmacogene, max_tokens: int = 1024):
+    content = build_content(variant, ensembl_info, is_pharmacogene)
+    response = client.messages.create(
+        model=MODEL,
+        max_tokens=max_tokens,
+        system=SYSTEM_PROMPT,
+        messages=[
+            {"role": "user", "content": content}
+        ]
+    )
+    return parse_router_response(response)
+
